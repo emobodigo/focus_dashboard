@@ -3,24 +3,18 @@ import React from "react";
 import SimpleButton from "../components/Buttons/SimpleButton";
 import SimpleInputField from "../components/InputFields/SimpleInputField";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/reducers/authSlice";
+import { authLogin} from "../redux/reducers/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const userAuth = useSelector((state) => state.auth);
+  let navigate = useNavigate();
+  // const userAuth = useSelector((state) => state.auth);
 
   const authHandler = (values, setSubmitting) => {
-    const user = {
-      adminId: 1,
-      username: "aquaterra",
-      adminLevel: 26
-    };
-    if (userAuth.isAuthenticated) {
-      console.log("masuk");
-    } else {
-      console.log("gak masuk");
-    }
     setSubmitting(false);
+    dispatch(authLogin());
+    navigate('/dashboard');
   };
 
   return (

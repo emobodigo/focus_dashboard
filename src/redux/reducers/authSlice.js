@@ -8,7 +8,8 @@ export const authSlice = createSlice({
         isFetching: false,
         isSuccess: false,
         isError: false,
-        message: ''
+        message: '',
+        isAuth: false
     },
     reducers: {
         clearState: (state) => {
@@ -16,9 +17,12 @@ export const authSlice = createSlice({
             state.isSuccess = false;
             state.isError = false;
             return state;
+        },
+        authLogin: (state) => {
+            state.isAuth = true;
         }
     }
 });
 
-export const { clearState } = authSlice.actions;
+export const { clearState, authLogin } = authSlice.actions;
 export default authSlice.reducer;

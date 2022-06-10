@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import { useSelector } from "react-redux";
 import Login from "./pages/Login";
 
 function App() {
-
-  const [auth, setAuth] = useState(null);
+  const auth = useSelector((state) => state.auth.isAuth);
+  console.log('myAuth', auth);
   return (
     <Routes>
       {!auth && (
